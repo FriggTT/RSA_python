@@ -6,15 +6,11 @@ from tkinter import ttk
 import tkinter.font as tkfont
 import random
 import math
-from PIL import Image, ImageTk
 
 windown = Tk()
 windown.geometry('630x530')
 windown.title('CrypTool - RSA')
 
-ico = Image.open('E:\CodeProgram\Python\Project_RSA\img.png')
-photo = ImageTk.PhotoImage(ico)
-windown.wm_iconphoto(False, photo)
 
 myFont = tkfont.Font(family='Time New Roman', size=10)
 myFont1 = tkfont.Font(family='Time New Roman', size=11)
@@ -360,7 +356,16 @@ def cacl_out1_num1(text_input, e, p, q, frame2):
 
 def calc_en_num(text_input, e, p, q, frame1, frame2):
     mystring = text_input.get()
-    if (any(ch.isdigit() for ch in mystring) and '#' and ' ') or len(mystring) >= 0:
+    mystring = mystring.strip()
+    check = True
+    for ch in mystring:
+        if (ch.isdigit() == True or ch == '#') and len(mystring) > 0:
+            check = True
+        else:
+            check = False
+    if check == True:
+
+        print(check)
         r = (int(p.get()))*(int(q.get()))
         l1 = mystring.split(' ')
         l1 = [int(i) for i in l1 if len(i) > 0 and i != '#']
@@ -405,7 +410,14 @@ def calc_en_num(text_input, e, p, q, frame1, frame2):
 
 def calc_de_num(text_input, e, p, q, frame1, frame2):
     mystring = text_input.get()
-    if (any(ch.isdigit() for ch in mystring) and '#' and ' ') or len(mystring) >= 0:
+    mystring = mystring.strip()
+    check = True
+    for ch in mystring:
+        if (ch.isdigit() == True or ch == '#') and len(mystring) > 0:
+            check = True
+        else:
+            check = False
+    if check == True:
         r = (int(p.get()))*(int(q.get()))
         l1 = mystring.split(' ')
         l1 = [int(i) for i in l1 if len(i) > 0 and i != '#']
